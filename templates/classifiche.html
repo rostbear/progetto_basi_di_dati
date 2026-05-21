@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CLASSIFICHE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="classifica-container">
+        <h2>CLASSIFICHE <span style="color: #db0707">TEMPI SUL GIRO</span></h2>
+        <form method="GET" action="/classifiche" class="form-filtri">
+            <div class="filtri">
+                <div class="campo-filtro">
+                    <label for="categoria">CATEGORIA</label>
+                    <select id="categoria" name="categoria">
+                        <option value="">TUTTE</option>
+                        {% for cat in categorie %}
+                        <option value="{{ cat[0] }}">{{ cat[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="campo-filtro">
+                    <label for="id_cliente">PILOTA</label>
+                    <select id="id_cliente" name="id_cliente">
+                        <option value="">TUTTI</option>
+                        {% for c in clienti %}
+                        <option value="{{ c[0] }}">{{ c[2] }} {{ c[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="pulsanti-filtri">
+                <button type="submit" class="btn-cerca">CERCA</button>
+            </div>
+        </form>
+        {% if classifica %}
+        <table class="tabella-classifica">
+            <thead>
+                <tr>
+                    <th>POS</th>
+                    <th>PILOTA</th>
+                    <th>NUMERO KART</th>
+                    <th>CATEGORIA</th>
+                    <th>MIGLIOR TEMPO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for riga in classifica %}
+                <tr>
+                    <td>#{{ loop.index }}</td>
+                    <td>{{ riga[0] }} {{ riga[1] }}</td>
+                    <td>{{ riga[2] }}</td>
+                    <td>{{ riga[3] }}</td>
+                    <td>{{ (riga[4] // 60000) }}:{{ ((riga[4] % 60000) // 1000) }}.{{ (riga[4] % 1000) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div>NESSUN TEMPO</div>
+        {% endif %}
+        <a href="/" class="link-home">TORNA ALLA HOME</a>
+    </div>
+</body>
+</html>

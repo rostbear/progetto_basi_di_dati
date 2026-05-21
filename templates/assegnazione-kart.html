@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>ASSEGNAZIONE TURNO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>ASSEGNAZIONE <span style="color: #db0707;">TURNO E KART</span></h2>
+    <form action="/assegnazione-kart" method="POST">
+        <label for="id_cliente">PILOTA</label>
+        <select id="id_cliente" name="id_cliente" required>
+            <option value="" disabled selected>SCEGLI IL PILOTA</option>
+            {% for c in clienti %}
+                <option value="{{ c[0] }}">{{ c[2] }} {{ c[1] }}</option>
+            {% endfor %}
+        </select>
+        <label for="id_turno">TURNO</label>
+        <select id="id_turno" name="id_turno" required>
+            <option value="" disabled selected>SCEGLI IL TURNO</option>
+            {% for t in turni %}
+                <option value="{{ t[0] }}">{{ t[1] }} - {{ t[2] }}</option>
+            {% endfor %}
+        </select>
+        <label for="id_kart">KART</label>
+        <select id="id_kart" name="id_kart" required>
+            <option value="" disabled selected>SCEGLI IL KART</option>
+            {% for k in karts %}
+                <option value="{{ k[0] }}">Kart: {{ k[1] }} - {{ k[2] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">CONFERMA ASSEGNAZIONE</button>
+    </form>
+    <a href="/" class="link-home">TORNA ALLA HOME</a>
+</div>
+</body>
+</html>

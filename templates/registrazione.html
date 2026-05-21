@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>REGISTRAZIONE NUOVO PILOTA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>REGISTRAZIONE <span style="color: #db0707;">NUOVO PILOTA</span></h2>
+        <form action="/registrazione" method="POST">
+            <label for="nome">NOME</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="cognome">COGNOME</label>
+            <input type="text" id="cognome" name="cognome" required>
+            <label for="data_nascita">DATA DI NASCITA</label>
+            <input type="date" id="data_nascita" name="data_nascita" required>
+            <label for="email">INDIRIZZO EMAIL</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">REGISTRA PILOTA</button>
+        </form>
+        <a href="/" class="link-home">TORNA ALLA HOME</a>
+    </div>
+</body>
+</html>

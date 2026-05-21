@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TURNI E PILOTI REGISTRATI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="classifica-container">
+        <h2>TURNI E <span style="color: #db0707">PILOTI REGISTRATI</span></h2>
+        <a href="/" class="link-home" style="margin-bottom: 15px;">TORNA ALLA HOME</a>
+        {% if turni %}
+        {% for turno in turni %}
+        <div class="turno-lista">
+            <div class="turno-info">
+                <div class="titolo-turno">
+                    DATA E ORA: {{ turno.data_ora }}
+                </div>
+                <div>
+                    TIPO: {{ turno.tipo }}
+                </div>
+            </div>
+
+            {% if turno.iscritti %}
+            <table class="tabella-piloti">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Pilota Registrato</th>
+                        <th>Numero Gara Kart</th>
+                        <th>Categoria Kart</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for iscritto in turno.iscritti %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ iscritto[0] }} {{ iscritto[1] }}</td>
+                        <td>#{{ iscritto[2] }}</td>
+                        <td>{{ iscritto[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div style="text-align: center; font-size: 1.1rem; padding: 40px 0;">
+            NESSUN TURNO REGISTRATO
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>KARTODROMO PUNTO DI CORDA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-home">
+        <div class="colonna-sinistra">
+            <div class="titolo">
+                <span>KARTODROMO</span><br>
+                <span style="color: #db0707;">PUNTO DI CORDA</span>
+            </div>
+        </div>
+        <div class="colonna-destra">
+            <a href="/registrazione" class="opzione">REGISTRAZIONE NUOVO CLIENTE</a>
+            <a href="/assegnazione-kart" class="opzione">ASSEGNAZIONE TURNO E KART</a>
+            <a href="/turni-piloti" class="opzione">TURNI E PILOTI REGISTRATI</a>
+            <a href="/classifiche" class="opzione">VISUALIZZAZIONE CLASSIFICHE</a>
+        </div>
+    </div>
+
+</body>
+</html>
